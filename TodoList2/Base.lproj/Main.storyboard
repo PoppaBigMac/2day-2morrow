@@ -73,6 +73,20 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RT1-Wk-UXa" id="ghX-o8-MBI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Do Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-WL-mqO">
+                                            <rect key="frame" x="8" y="8" width="240" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7E5-hY-BJo" customClass="RatingController" customModule="TodoList2" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="37" width="240" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -81,10 +95,12 @@
                             <outlet property="delegate" destination="lec-Ud-Oq1" id="eaP-PS-LMH"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLO-6B-0pT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2898" y="529"/>
+            <point key="canvasLocation" x="2896.8000000000002" y="528.48575712143929"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2un-xk-P6m">
