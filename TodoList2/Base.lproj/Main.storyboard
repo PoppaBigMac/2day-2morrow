@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,15 +26,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
-                                            <rect key="frame" x="155" y="19" width="65" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
+                                            <rect key="frame" x="8" y="19" width="326" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="trailing" secondItem="lmQ-4c-nat" secondAttribute="trailingMargin" id="Jc2-mq-93k"/>
+                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="centerY" secondItem="lmQ-4c-nat" secondAttribute="centerY" id="gWc-TT-dUd"/>
+                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="leading" secondItem="lmQ-4c-nat" secondAttribute="leadingMargin" id="xoS-vV-2Mr"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="listTitle" destination="A5q-mL-TcD" id="yK1-2J-Rqi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -42,7 +50,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="rfR-Y1-z5N">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="WVI-xB-Os9"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dGY-5x-rc6"/>
                     </navigationItem>
                 </tableViewController>

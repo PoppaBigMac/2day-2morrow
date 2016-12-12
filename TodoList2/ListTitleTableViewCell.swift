@@ -9,6 +9,8 @@
 import UIKit
 
 class ListTitleTableViewCell: UITableViewCell {
+    // MARK: Properties
+    @IBOutlet weak var listTitle: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
