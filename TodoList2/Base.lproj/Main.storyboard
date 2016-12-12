@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="2903" y="529"/>
         </scene>
-        <!--View Controller-->
+        <!--Todo Item View Controller-->
         <scene sceneID="fqX-fv-nDa">
             <objects>
-                <viewController id="IRv-8M-hT0" sceneMemberID="viewController">
+                <viewController id="IRv-8M-hT0" customClass="TodoItemViewController" customModule="TodoList2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dyN-Vt-Y95"/>
                         <viewControllerLayoutGuide type="bottom" id="Lkl-s0-LyU"/>
@@ -125,11 +125,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="siA-kM-RrQ"/>
+                    <navigationItem key="navigationItem" id="siA-kM-RrQ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5AI-vY-pQf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="c4i-Yc-jHP"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mT9-hV-EMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4776.8000000000002" y="527.58620689655174"/>
+            <point key="canvasLocation" x="4775" y="528"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2un-xk-P6m">
@@ -165,7 +168,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOe-7n-QQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3822" y="887"/>
+            <point key="canvasLocation" x="3834" y="912"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
