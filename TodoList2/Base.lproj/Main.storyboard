@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Screen Table View Controller-->
+        <!--Todo Lists-->
         <scene sceneID="cSU-zb-Ftg">
             <objects>
                 <tableViewController id="Hzk-E4-VxN" customClass="MainScreenTableViewController" customModule="TodoList2" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="listTitle" destination="A5q-mL-TcD" id="yK1-2J-Rqi"/>
-                                    <segue destination="lec-Ud-Oq1" kind="show" id="Edt-Sr-3Me"/>
+                                    <segue destination="lec-Ud-Oq1" kind="show" id="ZBB-ct-Uvb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -50,7 +50,7 @@
                             <outlet property="delegate" destination="Hzk-E4-VxN" id="VLu-fb-W7Y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="rfR-Y1-z5N">
+                    <navigationItem key="navigationItem" title="Todo Lists" id="rfR-Y1-z5N">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dGY-5x-rc6"/>
                     </navigationItem>
                 </tableViewController>
@@ -58,16 +58,16 @@
             </objects>
             <point key="canvasLocation" x="2005.5999999999999" y="529.38530734632684"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Todo List Table View Controller-->
         <scene sceneID="oO7-rZ-QLO">
             <objects>
-                <tableViewController id="lec-Ud-Oq1" sceneMemberID="viewController">
+                <tableViewController id="lec-Ud-Oq1" customClass="TodoListTableViewController" customModule="TodoList2" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="vQu-2u-HHS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoItemCell" rowHeight="90" id="RT1-Wk-UXa">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoItemCell" rowHeight="90" id="RT1-Wk-UXa" customClass="TodoItemTableViewCell" customModule="TodoList2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RT1-Wk-UXa" id="ghX-o8-MBI">
@@ -88,6 +88,9 @@
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="IRv-8M-hT0" kind="show" id="QYQ-Mk-rqL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -96,11 +99,37 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="d9i-YV-ERE">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qbd-Is-8c1">
+                            <connections>
+                                <segue destination="VNo-xw-jj6" kind="presentation" id="aKU-Zi-MvW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLO-6B-0pT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2896.8000000000002" y="528.48575712143929"/>
+            <point key="canvasLocation" x="2903" y="529"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fqX-fv-nDa">
+            <objects>
+                <viewController id="IRv-8M-hT0" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dyN-Vt-Y95"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lkl-s0-LyU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u4p-oj-Qxb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="siA-kM-RrQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mT9-hV-EMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4776.8000000000002" y="527.58620689655174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2un-xk-P6m">
@@ -120,5 +149,26 @@
             </objects>
             <point key="canvasLocation" x="1066.4000000000001" y="529.38530734632684"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BoY-b3-9qN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VNo-xw-jj6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mM9-Dp-ZTx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IRv-8M-hT0" kind="relationship" relationship="rootViewController" id="Xo8-Wy-2hv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eOe-7n-QQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3822" y="887"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Xo8-Wy-2hv"/>
+    </inferredMetricsTieBreakers>
 </document>
