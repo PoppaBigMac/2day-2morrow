@@ -8,14 +8,22 @@
 
 import UIKit
 
-class TodoItemViewController: UIViewController {
+class TodoItemViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     // MARK: Properties
     @IBOutlet weak var itemNameTextField: UITextField!
     @IBOutlet weak var importanceRating: RatingController!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var todoItem: TodoItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let todoItem = todoItem {
+            navigationItem.title = todoItem.itemName
+            itemNameTextField.text = todoItem.itemName
+            importanceRating.rating = todoItem.importance
+        }
 
         // Do any additional setup after loading the view.
     }
