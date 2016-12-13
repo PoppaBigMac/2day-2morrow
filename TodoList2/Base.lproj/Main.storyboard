@@ -123,7 +123,49 @@
                     <view key="view" contentMode="scaleToFill" id="u4p-oj-Qxb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hyX-gc-CCb" userLabel="Root Stack View">
+                                <rect key="frame" x="16" y="100" width="343" height="90"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-sz-f8I" userLabel="Name Entry Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMm-mM-REg">
+                                                <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9bj-0w-NiO">
+                                                <rect key="frame" x="91" y="0.0" width="252" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptr-wZ-dAH" customClass="RatingController" customModule="TodoList2" customModuleProvider="target">
+                                        <rect key="frame" x="51.5" y="46" width="240" height="44"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="2Bd-i1-fEG"/>
+                                            <constraint firstAttribute="width" constant="240" id="cVS-KF-SaA"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="OSJ-sz-f8I" secondAttribute="trailing" id="CA4-CY-hO6"/>
+                                    <constraint firstItem="OSJ-sz-f8I" firstAttribute="leading" secondItem="hyX-gc-CCb" secondAttribute="leading" id="rde-Jm-uhY"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hyX-gc-CCb" firstAttribute="leading" secondItem="u4p-oj-Qxb" secondAttribute="leadingMargin" id="KEO-3N-ogl"/>
+                            <constraint firstItem="hyX-gc-CCb" firstAttribute="centerX" secondItem="u4p-oj-Qxb" secondAttribute="centerX" id="OKu-JZ-JMb"/>
+                            <constraint firstItem="hyX-gc-CCb" firstAttribute="top" secondItem="u4p-oj-Qxb" secondAttribute="topMargin" constant="100" id="gDR-e4-flp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hyX-gc-CCb" secondAttribute="trailing" id="go9-pP-iAJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="siA-kM-RrQ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5AI-vY-pQf"/>
@@ -172,6 +214,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Xo8-Wy-2hv"/>
+        <segue reference="QYQ-Mk-rqL"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -1,6 +1,6 @@
 //
 //  RatingController.swift
-//  FoodTracker
+//  TodoList2
 //
 //  Created by Cesar Martinez on 11/3/16.
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
