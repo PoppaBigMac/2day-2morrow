@@ -17,6 +17,7 @@ class TodoItem {
         self.itemName = itemName
         self.importance = importance
         
+        // if there is no name, the initilizer must fail
         if itemName.isEmpty {
             return nil
         }
