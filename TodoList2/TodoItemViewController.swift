@@ -24,17 +24,38 @@ class TodoItemViewController: UIViewController, UITextFieldDelegate, UINavigatio
             itemNameTextField.text = todoItem.itemName
             importanceRating.rating = todoItem.importance
         }
-
-        // Do any additional setup after loading the view.
+        
+        // Make self the delegate for the text field
+        itemNameTextField.delegate = self
+        
+        checkNameValidity()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        checkNameValidity()
+        navigationItem.title = itemNameTextField.text
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func checkNameValidity() {
+        let text = itemNameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
     
     // MARK: Actions
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        // If the current view controller was presented modally, then we want to dismiss it,
+        // else we want to pop the view controller off the navigation stack.
+        
         let isPresentingModally = presentingViewController is UINavigationController
         
         if isPresentingModally {
