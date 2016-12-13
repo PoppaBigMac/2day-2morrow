@@ -24,20 +24,20 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fob-Xv-AUB" id="lmQ-4c-nat">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
-                                            <rect key="frame" x="8" y="19" width="326" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
+                                            <rect key="frame" x="0.0" y="19" width="374" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="trailing" secondItem="lmQ-4c-nat" secondAttribute="trailingMargin" id="Jc2-mq-93k"/>
-                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="centerY" secondItem="lmQ-4c-nat" secondAttribute="centerY" id="gWc-TT-dUd"/>
-                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="leading" secondItem="lmQ-4c-nat" secondAttribute="leadingMargin" id="xoS-vV-2Mr"/>
+                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="leading" secondItem="lmQ-4c-nat" secondAttribute="leading" id="l1h-Vn-LCD"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="A5q-mL-TcD" secondAttribute="trailing" constant="-40" id="q8K-qj-q7e"/>
+                                        <constraint firstItem="A5q-mL-TcD" firstAttribute="centerY" secondItem="lmQ-4c-nat" secondAttribute="centerY" id="wjI-zT-9M4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="RT1-Wk-UXa" id="ghX-o8-MBI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Do Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-WL-mqO">
