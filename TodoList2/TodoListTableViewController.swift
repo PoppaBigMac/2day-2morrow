@@ -79,14 +79,43 @@ class TodoListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail" {
+            // Downcast destination to set some of its properties
+            let viewControllerToEdit = segue.destination as! TodoItemViewController
+            
+            // get the selected cell sender
+            if let selectedTodoItemCell = sender as? TodoItemTableViewCell {
+                // Get index path for the selected cell and get the item it corresponds to
+                let indexPath = tableView.indexPath(for: selectedTodoItemCell)!
+                let selectedItem = itemsTodo[indexPath.row]
+                
+                // Set destination's item to the item that was selected
+                viewControllerToEdit.todoItem = selectedItem
+            }
+        } else if segue.identifier == "NewItem" {
+            print("New item is being created")
+        }
     }
-    */
+    
+    @IBAction func unwindToTodoList(sender: UIStoryboardSegue) {
+        // Downcast to get the item out of the sender view controller
+        if let todoItemViewController = sender.source as? TodoItemViewController, let item = todoItemViewController.todoItem {
+            // If there was a cell selected, update it. Else create a new one
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                itemsTodo[selectedIndexPath.row] = item
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let indexPath = IndexPath(row: itemsTodo.count, section: 0)
+                itemsTodo += [item]
+                tableView.insertRows(at: [indexPath], with: .bottom)
+            }
+            
+        }
+    }
 
 }

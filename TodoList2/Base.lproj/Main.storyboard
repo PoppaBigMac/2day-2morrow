@@ -20,11 +20,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListTitleCell" rowHeight="60" id="fob-Xv-AUB" customClass="ListTitleTableViewCell" customModule="TodoList2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListTitleCell" rowHeight="60" id="fob-Xv-AUB" customClass="ListTitleTableViewCell" customModule="TodoList2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fob-Xv-AUB" id="lmQ-4c-nat">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
@@ -69,11 +69,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoItemCell" rowHeight="90" id="RT1-Wk-UXa" customClass="TodoItemTableViewCell" customModule="TodoList2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TodoItemCell" rowHeight="90" id="RT1-Wk-UXa" customClass="TodoItemTableViewCell" customModule="TodoList2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="RT1-Wk-UXa" id="ghX-o8-MBI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To Do Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-WL-mqO">
@@ -93,7 +93,7 @@
                                 <connections>
                                     <outlet property="todoItemImportance" destination="7E5-hY-BJo" id="drd-kl-ZOr"/>
                                     <outlet property="todoItemName" destination="Qqa-WL-mqO" id="aOu-jD-3bT"/>
-                                    <segue destination="IRv-8M-hT0" kind="show" id="QYQ-Mk-rqL"/>
+                                    <segue destination="IRv-8M-hT0" kind="show" identifier="ShowDetail" id="QYQ-Mk-rqL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,7 +106,7 @@
                     <navigationItem key="navigationItem" id="d9i-YV-ERE">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qbd-Is-8c1">
                             <connections>
-                                <segue destination="VNo-xw-jj6" kind="presentation" id="aKU-Zi-MvW"/>
+                                <segue destination="VNo-xw-jj6" kind="presentation" identifier="NewItem" id="aKU-Zi-MvW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,7 +177,11 @@
                                 <action selector="cancel:" destination="IRv-8M-hT0" id="bEx-d7-Q8j"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="c4i-Yc-jHP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="c4i-Yc-jHP">
+                            <connections>
+                                <segue destination="OVJ-lk-gQZ" kind="unwind" unwindAction="unwindToTodoListWithSender:" id="Nx3-ax-1n4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="importanceRating" destination="Ptr-wZ-dAH" id="ExC-Pb-oid"/>
@@ -186,8 +190,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mT9-hV-EMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OVJ-lk-gQZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4775" y="528"/>
+            <point key="canvasLocation" x="4484" y="529"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2un-xk-P6m">
@@ -223,7 +228,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOe-7n-QQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3834" y="912"/>
+            <point key="canvasLocation" x="3689" y="911"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -66,14 +66,18 @@ class TodoItemViewController: UIViewController, UITextFieldDelegate, UINavigatio
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if saveButton === sender as! UIBarButtonItem {
+            let name = itemNameTextField.text ?? "Default"
+            let importance = importanceRating.rating
+            
+            todoItem = TodoItem(itemName: name, importance: importance)!
+        }
     }
-    */
+    
 
 }
