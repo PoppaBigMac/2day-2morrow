@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class TodoListTableViewController: UITableViewController {
     // MARK: Properties
@@ -15,7 +16,9 @@ class TodoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        if let savedTodoItems = loadTodoItems() {
+            itemsTodo += savedTodoItems
+        }
     }
 
     // MARK: - Table view data source
@@ -56,6 +59,7 @@ class TodoListTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             itemsTodo.remove(at: indexPath.row)
+            saveTodoItems()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -114,7 +118,24 @@ class TodoListTableViewController: UITableViewController {
                 tableView.insertRows(at: [indexPath], with: .bottom)
             }
             
+            // Save the items
+            saveTodoItems()
         }
+    }
+    
+    // MARK: Private Methods
+    
+    private func saveTodoItems() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemsTodo, toFile: TodoItem.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("itemsTodo saved successfully", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Unable to save itemsTodo", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadTodoItems() -> [TodoItem]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoItem.ArchiveURL.path) as? [TodoItem]
     }
 
 }
