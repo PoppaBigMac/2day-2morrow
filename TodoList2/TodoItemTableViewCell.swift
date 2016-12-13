@@ -9,6 +9,8 @@
 import UIKit
 
 class TodoItemTableViewCell: UITableViewCell {
+    @IBOutlet weak var todoItemName: UILabel!
+    @IBOutlet weak var todoItemImportance: RatingController!
 
     override func awakeFromNib() {
         super.awakeFromNib()
