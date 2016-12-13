@@ -7,3 +7,18 @@
 //
 
 import UIKit
+
+class TodoItem {
+    // MARK: Properties
+    var itemName: String
+    var importance: Int
+    
+    init?(itemName: String, importance: Int) {
+        self.itemName = itemName
+        self.importance = importance
+        
+        if itemName.isEmpty {
+            return nil
+        }
+    }
+}
