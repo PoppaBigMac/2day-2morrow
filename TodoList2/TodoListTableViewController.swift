@@ -15,8 +15,7 @@ class TodoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let sampleItem = TodoItem(itemName: "Code", importance: 5)!
-        itemsTodo += [sampleItem]
+
     }
 
     // MARK: - Table view data source
