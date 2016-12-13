@@ -35,7 +35,13 @@ class TodoItemViewController: UIViewController, UITextFieldDelegate, UINavigatio
     
     // MARK: Actions
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        let isPresentingModally = presentingViewController is UINavigationController
         
+        if isPresentingModally {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController!.popViewController(animated: true)
+        }
     }
 
 
