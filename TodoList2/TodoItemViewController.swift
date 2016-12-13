@@ -9,6 +9,10 @@
 import UIKit
 
 class TodoItemViewController: UIViewController {
+    // MARK: Properties
+    @IBOutlet weak var itemNameTextField: UITextField!
+    @IBOutlet weak var importanceRating: RatingController!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,11 @@ class TodoItemViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Actions
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        
+    }
+
 
     /*
     // MARK: - Navigation

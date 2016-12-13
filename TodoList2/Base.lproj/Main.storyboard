@@ -168,9 +168,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="siA-kM-RrQ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5AI-vY-pQf"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5AI-vY-pQf">
+                            <connections>
+                                <action selector="cancel:" destination="IRv-8M-hT0" id="bEx-d7-Q8j"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="c4i-Yc-jHP"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="importanceRating" destination="Ptr-wZ-dAH" id="ExC-Pb-oid"/>
+                        <outlet property="itemNameTextField" destination="9bj-0w-NiO" id="DBh-uR-pYD"/>
+                        <outlet property="saveButton" destination="c4i-Yc-jHP" id="rNT-xq-fz6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mT9-hV-EMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
