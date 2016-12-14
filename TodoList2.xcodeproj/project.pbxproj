@@ -19,6 +19,7 @@
 		415939111DFE783000996CE0 /* TodoList2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415939101DFE783000996CE0 /* TodoList2Tests.swift */; };
 		4159391C1DFE7AFE00996CE0 /* MainScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159391B1DFE7AFE00996CE0 /* MainScreenTableViewController.swift */; };
 		4159391E1DFE7B2400996CE0 /* ListTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159391D1DFE7B2400996CE0 /* ListTitleTableViewCell.swift */; };
+		41D07B981E01FF8F00BB8551 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D07B971E01FF8F00BB8551 /* TodoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		415939121DFE783000996CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4159391B1DFE7AFE00996CE0 /* MainScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewController.swift; sourceTree = "<group>"; };
 		4159391D1DFE7B2400996CE0 /* ListTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTitleTableViewCell.swift; sourceTree = "<group>"; };
+		41D07B971E01FF8F00BB8551 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				411629CE1DFF5C7900B8088E /* TodoListTableViewController.swift */,
 				411629D01DFF5C9D00B8088E /* TodoItemTableViewCell.swift */,
+				41D07B971E01FF8F00BB8551 /* TodoList.swift */,
 			);
 			name = "Todo List";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41D07B981E01FF8F00BB8551 /* TodoList.swift in Sources */,
 				4159391E1DFE7B2400996CE0 /* ListTitleTableViewCell.swift in Sources */,
 				411629CA1DFF5ABA00B8088E /* RatingController.swift in Sources */,
 				411629D11DFF5C9D00B8088E /* TodoItemTableViewCell.swift in Sources */,
