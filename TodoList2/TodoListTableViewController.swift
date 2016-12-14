@@ -11,13 +11,15 @@ import os.log
 
 class TodoListTableViewController: UITableViewController, UINavigationControllerDelegate {
     // MARK: Properties
-    var todoList: TodoList = TodoList(todoItems: [TodoItem]())
+    var todoList: TodoList = TodoList(title: "title", items: [TodoItem]())
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = todoList.title
 
-        if let savedTodoList = loadTodoList() {
-            todoList = savedTodoList
+        if let savedTodoItems = loadTodoItems() {
+            todoList.items += savedTodoItems
         }
     }
 
@@ -28,7 +30,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoList.todoItems.count
+        return todoList.items.count
     }
 
     
@@ -36,7 +38,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         let cellIdentifier = "TodoItemCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoItemTableViewCell
         
-        let item = todoList.todoItems[indexPath.row]
+        let item = todoList.items[indexPath.row]
         
         cell.todoItemImportance.rating = item.importance
         cell.todoItemName.text = item.itemName
@@ -58,8 +60,8 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            todoList.todoItems.remove(at: indexPath.row)
-            saveTodoList()
+            todoList.items.remove(at: indexPath.row)
+            saveTodoItems()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -95,7 +97,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
             if let selectedTodoItemCell = sender as? TodoItemTableViewCell {
                 // Get index path for the selected cell and get the item it corresponds to
                 let indexPath = tableView.indexPath(for: selectedTodoItemCell)!
-                let selectedItem = todoList.todoItems[indexPath.row]
+                let selectedItem = todoList.items[indexPath.row]
                 
                 // Set destination's item to the item that was selected
                 viewControllerToEdit.todoItem = selectedItem
@@ -110,29 +112,29 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         if let todoItemViewController = sender.source as? TodoItemViewController, let item = todoItemViewController.todoItem {
             // If there was a cell selected, update it. Else create a new one
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                todoList.todoItems[selectedIndexPath.row] = item
+                todoList.items[selectedIndexPath.row] = item
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
-                let indexPath = IndexPath(row: todoList.todoItems.count, section: 0)
-                todoList.todoItems += [item]
+                let indexPath = IndexPath(row: todoList.items.count, section: 0)
+                todoList.items += [item]
                 tableView.insertRows(at: [indexPath], with: .bottom)
             }
             
             // Save the items
-            saveTodoList()
+            saveTodoItems()
         }
     }
-    
+/*
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if let mainScreen = viewController as? MainScreenTableViewController {
             
         }
     }
-    
+*/
     // MARK: Private Methods
     
-    private func saveTodoList() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList, toFile: TodoItem.ArchiveURL.path)
+    private func saveTodoItems() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList.items, toFile: TodoItem.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("itemsTodo saved successfully", log: OSLog.default, type: .debug)
         } else {
@@ -140,8 +142,8 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         }
     }
     
-    private func loadTodoList() -> TodoList? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoItem.ArchiveURL.path) as? TodoList
+    private func loadTodoItems() -> [TodoItem]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoItem.ArchiveURL.path) as? [TodoItem]
     }
 
 }

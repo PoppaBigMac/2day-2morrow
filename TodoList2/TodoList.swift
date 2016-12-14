@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TodoList {
+class TodoList: NSObject {
     // MARK: Properties
-    var todoItems: [TodoItem]
+    var title: String
+    var items: [TodoItem]
     
-    init(todoItems: [TodoItem]) {
-        self.todoItems = todoItems
+    init(title: String, items: [TodoItem]) {
+        self.title = title
+        self.items = items
     }
 }
