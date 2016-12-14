@@ -9,20 +9,19 @@
 import UIKit
 
 class MainScreenTableViewController: UITableViewController {
-    var titles: [String] = [String]()
+    var lists: [TodoList] = [TodoList]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-        let todayTitle = "Today"
-        let weekTitle = "This Week"
-        let monthTitle = "This Month"
-        let yearTitle = "This Year"
-        let customTitle = "My Goals"
+        let todayList = TodoList(title: "Today", items: [TodoItem]())
+        let weekList = TodoList(title: "Week", items: [TodoItem]())
+        let monthList = TodoList(title: "Month", items: [TodoItem]())
+        let yearList = TodoList(title: "Year", items: [TodoItem]())
         
-        titles += [todayTitle, weekTitle, monthTitle, yearTitle, customTitle]
+        lists += [todayList, weekList, monthList, yearList]
         
     }
 
@@ -40,7 +39,7 @@ class MainScreenTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return titles.count
+        return lists.count
     }
 
     
@@ -48,7 +47,7 @@ class MainScreenTableViewController: UITableViewController {
         let identifier = "ListTitleCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ListTitleTableViewCell
 
-        let title = titles[indexPath.row]
+        let title = lists[indexPath.row].title
         
         cell.listTitle.text = title
 
@@ -75,7 +74,7 @@ class MainScreenTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            titles.remove(at: indexPath.row)
+            lists.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
