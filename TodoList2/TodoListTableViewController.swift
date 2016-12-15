@@ -11,16 +11,18 @@ import os.log
 
 class TodoListTableViewController: UITableViewController, UINavigationControllerDelegate {
     // MARK: Properties
-    var todoList: TodoList = TodoList(title: "title", items: [TodoItem]())
+    var todoList: TodoList = TodoList(title: "DummyList", items: [TodoItem]())
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+            
         navigationItem.title = todoList.title
-
+            
         if let savedTodoItems = loadTodoItems() {
             todoList.items += savedTodoItems
         }
+        
     }
 
     // MARK: - Table view data source
