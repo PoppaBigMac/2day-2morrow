@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class MainScreenTableViewController: UITableViewController {
     var lists: [TodoList] = [TodoList]()
@@ -20,6 +21,10 @@ class MainScreenTableViewController: UITableViewController {
         let weekList = TodoList(title: "Week", items: [TodoItem]())
         let monthList = TodoList(title: "Month", items: [TodoItem]())
         let yearList = TodoList(title: "Year", items: [TodoItem]())
+        
+        if let savedList = loadTodoLists() {
+            lists += savedList
+        }
         
         lists += [todayList, weekList, monthList, yearList]
         
@@ -75,6 +80,7 @@ class MainScreenTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             lists.remove(at: indexPath.row)
+            saveTodoLists()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -106,5 +112,18 @@ class MainScreenTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
+    private func saveTodoLists() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: TodoList.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("lists saved successfully", log: .default, type: .debug)
+        } else {
+            os_log("lists unable to save", log: .default, type: .error)
+        }
+    }
+    
+    private func loadTodoLists() -> [TodoList]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoList.ArchiveURL.path) as? [TodoList]
+    }
 
 }
