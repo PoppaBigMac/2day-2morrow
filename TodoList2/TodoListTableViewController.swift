@@ -13,12 +13,17 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     // MARK: Properties
     var todoList: TodoList?
     
+    // MARK: Archiving Paths
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static var ArchiveURL: URL = URL(fileURLWithPath: "")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
             
         navigationItem.title = todoList?.title
+        TodoListTableViewController.ArchiveURL = TodoListTableViewController.DocumentsDirectory.appendingPathExtension(todoList!.title)
             
         if let savedTodoItems = loadTodoItems() {
             todoList?.items = savedTodoItems
@@ -127,17 +132,11 @@ class TodoListTableViewController: UITableViewController, UINavigationController
             saveTodoItems()
         }
     }
-/*
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if let mainScreen = viewController as? MainScreenTableViewController {
-            
-        }
-    }
-*/
+
     // MARK: Private Methods
     
     private func saveTodoItems() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList!.items, toFile: TodoItem.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList!.items, toFile: TodoListTableViewController.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("itemsTodo saved successfully", log: OSLog.default, type: .debug)
         } else {
@@ -146,7 +145,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     }
     
     private func loadTodoItems() -> [TodoItem]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoItem.ArchiveURL.path) as? [TodoItem]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoListTableViewController.ArchiveURL.path) as? [TodoItem]
     }
 
 }

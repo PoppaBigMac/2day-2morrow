@@ -14,9 +14,6 @@ class TodoList: NSObject, NSCoding {
     var title: String
     var items: [TodoItem]
     
-    // MARK: Archiving Paths
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathExtension("lists")
     
     // MARK: Types
     struct PropertyKey {

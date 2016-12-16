@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class MainScreenTableViewController: UITableViewController {
+class MainScreenTableViewController: UITableViewController, UINavigationControllerDelegate {
     var lists: [TodoList] = [TodoList]()
 
     override func viewDidLoad() {
@@ -17,16 +17,20 @@ class MainScreenTableViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-        let todayList = TodoList(title: "Today", items: [TodoItem]())
-        let weekList = TodoList(title: "Week", items: [TodoItem]())
-        let monthList = TodoList(title: "Month", items: [TodoItem]())
-        let yearList = TodoList(title: "Year", items: [TodoItem]())
         
         if let savedLists = loadTodoLists() {
+            os_log("Saved lists loaded", log: .default, type: .debug)
             lists = savedLists
+        } else {
+            os_log("Lists initialized", log: .default, type: .debug)
+            let todayList = TodoList(title: "Today", items: [TodoItem]())
+            let weekList = TodoList(title: "Week", items: [TodoItem]())
+            let monthList = TodoList(title: "Month", items: [TodoItem]())
+            let yearList = TodoList(title: "Year", items: [TodoItem]())
+            let dummyList = TodoList(title: "Dummy List", items: [TodoItem]())
+            
+            lists += [todayList, weekList, monthList, yearList, dummyList]
         }
-        
-        lists += [todayList, weekList, monthList, yearList]
         
     }
 
@@ -38,7 +42,6 @@ class MainScreenTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
 
@@ -121,9 +124,13 @@ class MainScreenTableViewController: UITableViewController {
             }
         }
     }
+
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        saveTodoLists()
+    }
     
     private func saveTodoLists() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: TodoList.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: TodoListTableViewController.ArchiveURL.path)
         
         if isSuccessfulSave {
             os_log("lists saved successfully", log: .default, type: .debug)
@@ -133,7 +140,7 @@ class MainScreenTableViewController: UITableViewController {
     }
     
     private func loadTodoLists() -> [TodoList]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoList.ArchiveURL.path) as? [TodoList]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoListTableViewController.ArchiveURL.path) as? [TodoList]
     }
 
 }
