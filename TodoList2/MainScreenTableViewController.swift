@@ -22,8 +22,8 @@ class MainScreenTableViewController: UITableViewController {
         let monthList = TodoList(title: "Month", items: [TodoItem]())
         let yearList = TodoList(title: "Year", items: [TodoItem]())
         
-        if let savedList = loadTodoLists() {
-            lists += savedList
+        if let savedLists = loadTodoLists() {
+            lists = savedLists
         }
         
         lists += [todayList, weekList, monthList, yearList]
@@ -110,6 +110,16 @@ class MainScreenTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowList" {
+            let todoListVC = segue.destination as! TodoListTableViewController
+            
+            if let selectedCell = sender as? ListTitleTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedCell)!
+                let selectedList = lists[indexPath.row]
+                
+                todoListVC.todoList = selectedList
+            }
+        }
     }
     
     private func saveTodoLists() {

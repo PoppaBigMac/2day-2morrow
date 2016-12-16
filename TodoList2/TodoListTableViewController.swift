@@ -11,16 +11,17 @@ import os.log
 
 class TodoListTableViewController: UITableViewController, UINavigationControllerDelegate {
     // MARK: Properties
-    var todoList: TodoList = TodoList(title: "DummyList", items: [TodoItem]())
-
+    var todoList: TodoList?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
             
-        navigationItem.title = todoList.title
+        navigationItem.title = todoList?.title
             
         if let savedTodoItems = loadTodoItems() {
-            todoList.items += savedTodoItems
+            todoList?.items = savedTodoItems
         }
         
     }
@@ -32,7 +33,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoList.items.count
+        return todoList!.items.count
     }
 
     
@@ -40,10 +41,10 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         let cellIdentifier = "TodoItemCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoItemTableViewCell
         
-        let item = todoList.items[indexPath.row]
+        let item = todoList?.items[indexPath.row]
         
-        cell.todoItemImportance.rating = item.importance
-        cell.todoItemName.text = item.itemName
+        cell.todoItemImportance.rating = (item?.importance)!
+        cell.todoItemName.text = item?.itemName
         
         return cell
     }
@@ -62,7 +63,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            todoList.items.remove(at: indexPath.row)
+            todoList?.items.remove(at: indexPath.row)
             saveTodoItems()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -99,7 +100,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
             if let selectedTodoItemCell = sender as? TodoItemTableViewCell {
                 // Get index path for the selected cell and get the item it corresponds to
                 let indexPath = tableView.indexPath(for: selectedTodoItemCell)!
-                let selectedItem = todoList.items[indexPath.row]
+                let selectedItem = todoList?.items[indexPath.row]
                 
                 // Set destination's item to the item that was selected
                 viewControllerToEdit.todoItem = selectedItem
@@ -114,11 +115,11 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         if let todoItemViewController = sender.source as? TodoItemViewController, let item = todoItemViewController.todoItem {
             // If there was a cell selected, update it. Else create a new one
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                todoList.items[selectedIndexPath.row] = item
+                todoList?.items[selectedIndexPath.row] = item
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             } else {
-                let indexPath = IndexPath(row: todoList.items.count, section: 0)
-                todoList.items += [item]
+                let indexPath = IndexPath(row: (todoList?.items.count)!, section: 0)
+                todoList?.items += [item]
                 tableView.insertRows(at: [indexPath], with: .bottom)
             }
             
@@ -136,7 +137,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     // MARK: Private Methods
     
     private func saveTodoItems() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList.items, toFile: TodoItem.ArchiveURL.path)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList!.items, toFile: TodoItem.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("itemsTodo saved successfully", log: OSLog.default, type: .debug)
         } else {
