@@ -23,7 +23,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         
             
         navigationItem.title = todoList?.title
-        TodoListTableViewController.ArchiveURL = TodoListTableViewController.DocumentsDirectory.appendingPathExtension(todoList!.title)
+        TodoListTableViewController.ArchiveURL = TodoListTableViewController.DocumentsDirectory.appendingPathComponent(todoList!.title)
             
         if let savedTodoItems = loadTodoItems() {
             todoList?.items = savedTodoItems
@@ -136,7 +136,8 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     // MARK: Private Methods
     
     private func saveTodoItems() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(todoList!.items, toFile: TodoListTableViewController.ArchiveURL.path)
+        let itemsToSave = todoList!.items
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemsToSave, toFile: TodoListTableViewController.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("itemsTodo saved successfully", log: OSLog.default, type: .debug)
         } else {

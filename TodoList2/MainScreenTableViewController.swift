@@ -11,6 +11,7 @@ import os.log
 
 class MainScreenTableViewController: UITableViewController, UINavigationControllerDelegate {
     var lists: [TodoList] = [TodoList]()
+    var url = TodoListTableViewController.DocumentsDirectory.appendingPathComponent("lists")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +131,8 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
     }
     
     private func saveTodoLists() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: TodoListTableViewController.ArchiveURL.path)
+        print(url)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: url.path)
         
         if isSuccessfulSave {
             os_log("lists saved successfully", log: .default, type: .debug)
@@ -140,7 +142,7 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
     }
     
     private func loadTodoLists() -> [TodoList]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoListTableViewController.ArchiveURL.path) as? [TodoList]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? [TodoList]
     }
 
 }
