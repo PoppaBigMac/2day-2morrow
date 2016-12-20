@@ -25,12 +25,11 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
         } else {
             os_log("Lists initialized", log: .default, type: .debug)
             let todayList = TodoList(title: "Today", items: [TodoItem]())
-            let weekList = TodoList(title: "Week", items: [TodoItem]())
-            let monthList = TodoList(title: "Month", items: [TodoItem]())
-            let yearList = TodoList(title: "Year", items: [TodoItem]())
-            let dummyList = TodoList(title: "Dummy List", items: [TodoItem]())
+            let weekList = TodoList(title: "This Week", items: [TodoItem]())
+            let monthList = TodoList(title: "This Month", items: [TodoItem]())
+            let yearList = TodoList(title: "This Year", items: [TodoItem]())
             
-            lists += [todayList, weekList, monthList, yearList, dummyList]
+            lists += [todayList, weekList, monthList, yearList]
         }
         
     }
@@ -126,7 +125,13 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
         }
     }
 
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    @IBAction func unwindToMainScreen(sender: UIStoryboardSegue) {
+        if let newListVC = sender.source as? NewListViewController {
+            let newList = TodoList(title: newListVC.listName, items: [TodoItem]())
+            let indexPath = IndexPath(row: lists.count, section: 0)
+            lists += [newList]
+            tableView.insertRows(at: [indexPath], with: .bottom)
+        }
         saveTodoLists()
     }
     

@@ -19,6 +19,7 @@
 		415939111DFE783000996CE0 /* TodoList2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415939101DFE783000996CE0 /* TodoList2Tests.swift */; };
 		4159391C1DFE7AFE00996CE0 /* MainScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159391B1DFE7AFE00996CE0 /* MainScreenTableViewController.swift */; };
 		4159391E1DFE7B2400996CE0 /* ListTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4159391D1DFE7B2400996CE0 /* ListTitleTableViewCell.swift */; };
+		417B402A1E08B47600A78C84 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417B40291E08B47600A78C84 /* NewListViewController.swift */; };
 		41D07B981E01FF8F00BB8551 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D07B971E01FF8F00BB8551 /* TodoList.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		415939121DFE783000996CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4159391B1DFE7AFE00996CE0 /* MainScreenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewController.swift; sourceTree = "<group>"; };
 		4159391D1DFE7B2400996CE0 /* ListTitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTitleTableViewCell.swift; sourceTree = "<group>"; };
+		417B40291E08B47600A78C84 /* NewListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
 		41D07B971E01FF8F00BB8551 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 			children = (
 				4159391B1DFE7AFE00996CE0 /* MainScreenTableViewController.swift */,
 				4159391D1DFE7B2400996CE0 /* ListTitleTableViewCell.swift */,
+				417B40291E08B47600A78C84 /* NewListViewController.swift */,
 			);
 			name = "Main Screen";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				41D07B981E01FF8F00BB8551 /* TodoList.swift in Sources */,
 				4159391E1DFE7B2400996CE0 /* ListTitleTableViewCell.swift in Sources */,
 				411629CA1DFF5ABA00B8088E /* RatingController.swift in Sources */,
+				417B402A1E08B47600A78C84 /* NewListViewController.swift in Sources */,
 				411629D11DFF5C9D00B8088E /* TodoItemTableViewCell.swift in Sources */,
 				411629CF1DFF5C7900B8088E /* TodoListTableViewController.swift in Sources */,
 				411629D41DFF711A00B8088E /* TodoItemViewController.swift in Sources */,
