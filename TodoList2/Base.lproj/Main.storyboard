@@ -28,11 +28,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
-                                            <rect key="frame" x="0.0" y="12.5" width="374" height="36.5"/>
+                                            <rect key="frame" x="0.0" y="11.5" width="374" height="36.5"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="List Title">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.16230601072311401" green="0.38521629571914673" blue="0.27923303842544556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="NSColor" red="0.048912964761257172" green="0.10250573605298996" blue="0.028232553973793983" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <font key="NSFont" size="30" name="Verdana-Bold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
