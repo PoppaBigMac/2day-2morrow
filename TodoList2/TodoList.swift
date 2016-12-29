@@ -6,6 +6,10 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * Data model of a TodoList
+ ********************************************************************/
+
 import UIKit
 import os.log
 

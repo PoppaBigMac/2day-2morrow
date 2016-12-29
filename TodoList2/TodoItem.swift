@@ -6,6 +6,10 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * Data model of a TodoItem
+ ********************************************************************/
+
 import UIKit
 // Very important to import this
 import os.log

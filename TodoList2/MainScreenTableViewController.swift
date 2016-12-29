@@ -6,19 +6,24 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * This file runs the main screen of the app that includes all of the
+ * lists and the functionality to edit and add a list.
+ ********************************************************************/
+
 import UIKit
 import os.log
 
 class MainScreenTableViewController: UITableViewController, UINavigationControllerDelegate {
+    // MARK: Properties
     var lists: [TodoList] = [TodoList]()
     var url = TodoListTableViewController.DocumentsDirectory.appendingPathComponent("lists")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = editButtonItem
-        
-        
+        // If there are saved lists then we should load them. Else, let's start with the
+        // user's previously saved lists
         if let savedLists = loadTodoLists() {
             os_log("Saved lists loaded", log: .default, type: .debug)
             lists = savedLists
@@ -32,11 +37,6 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
             lists += [todayList, weekList, monthList, yearList]
         }
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -78,7 +78,7 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
 
 
     
-    // Override to support editing the table view.
+    // Override to support editing the table view, such as deleting or inserting
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -125,6 +125,8 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
         }
     }
 
+    // Allows us to get the information from NewListViewController so we can use it
+    // to create a new cell when the save button is pressed
     @IBAction func unwindToMainScreen(sender: UIStoryboardSegue) {
         if let newListVC = sender.source as? NewListViewController {
             let newList = TodoList(title: newListVC.listName, items: [TodoItem]())
@@ -135,8 +137,8 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
         saveTodoLists()
     }
     
+    // Saves and loads lists from an NSKeyedArchiver and NSKeyedUnarchiver
     private func saveTodoLists() {
-        print(url)
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: url.path)
         
         if isSuccessfulSave {

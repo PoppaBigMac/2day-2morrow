@@ -6,6 +6,10 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * This file controls each TodoList and shows it in a table view format
+ ********************************************************************/
+
 import UIKit
 import os.log
 
@@ -21,7 +25,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            
+        
         navigationItem.title = todoList?.title
         TodoListTableViewController.ArchiveURL = TodoListTableViewController.DocumentsDirectory.appendingPathComponent(todoList!.title)
             
@@ -43,6 +47,7 @@ class TodoListTableViewController: UITableViewController, UINavigationController
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cellIdentifier = "TodoItemCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoItemTableViewCell
         

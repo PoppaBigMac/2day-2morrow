@@ -6,6 +6,11 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * This file is what controls the view which allows you to add a new 
+ * list to the Main Screen
+ ********************************************************************/
+
 import UIKit
 
 class NewListViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {

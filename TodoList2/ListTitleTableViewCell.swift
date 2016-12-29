@@ -6,6 +6,10 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * This file represents a cell within the MainScreenTableViewController
+ ********************************************************************/
+
 import UIKit
 
 class ListTitleTableViewCell: UITableViewCell {

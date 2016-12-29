@@ -6,6 +6,10 @@
 //  Copyright © 2016 Cesar Martinez. All rights reserved.
 //
 
+/*********************************************************************
+ * Controls the view where one can add a new TodoItem to a TodoList
+ ********************************************************************/
+
 import UIKit
 
 class TodoItemViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
