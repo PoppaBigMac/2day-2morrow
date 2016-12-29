@@ -15,6 +15,7 @@ import UIKit
 class ListTitleTableViewCell: UITableViewCell {
     // MARK: Properties
     @IBOutlet weak var listTitle: UILabel!
+    @IBOutlet weak var itemsNumber: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

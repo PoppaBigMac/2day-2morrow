@@ -17,7 +17,7 @@ import os.log
 class MainScreenTableViewController: UITableViewController, UINavigationControllerDelegate {
     // MARK: Properties
     var lists: [TodoList] = [TodoList]()
-    var url = TodoListTableViewController.DocumentsDirectory.appendingPathComponent("lists")
+    var url = TodoItem.DocumentsDirectory.appendingPathComponent("lists")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,14 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
             
             lists += [todayList, weekList, monthList, yearList]
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        tableView.reloadData()
+        
+        saveTodoLists()
     }
 
     // MARK: - Table view data source
@@ -55,13 +62,13 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
         let identifier = "ListTitleCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ListTitleTableViewCell
 
-        let title = lists[indexPath.row].title
-        
-        cell.listTitle.text = title
+        let list = lists[indexPath.row]
+        cell.listTitle.text = list.title
+        cell.itemsNumber.text = "\(list.getItemAmount())"
 
         return cell
     }
-    
+
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -137,6 +144,8 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
         saveTodoLists()
     }
     
+    // MARK: NSCoding
+    
     // Saves and loads lists from an NSKeyedArchiver and NSKeyedUnarchiver
     private func saveTodoLists() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: url.path)
@@ -151,5 +160,8 @@ class MainScreenTableViewController: UITableViewController, UINavigationControll
     private func loadTodoLists() -> [TodoList]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? [TodoList]
     }
+    
+    
+    // MARK: Helper Methods
 
 }

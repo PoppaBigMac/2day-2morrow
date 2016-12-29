@@ -44,4 +44,9 @@ class TodoList: NSObject, NSCoding {
         
         self.init(title: title, items: items)
     }
+    
+    // MARK: Helper Methods
+    func getItemAmount() -> Int {
+        return items.count
+    }
 }

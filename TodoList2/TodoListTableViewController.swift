@@ -17,22 +17,10 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     // MARK: Properties
     var todoList: TodoList?
     
-    // MARK: Archiving Paths
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static var ArchiveURL: URL = URL(fileURLWithPath: "")
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         navigationItem.title = todoList?.title
-        TodoListTableViewController.ArchiveURL = TodoListTableViewController.DocumentsDirectory.appendingPathComponent(todoList!.title)
-            
-        if let savedTodoItems = loadTodoItems() {
-            todoList?.items = savedTodoItems
-        }
-        
     }
 
     // MARK: - Table view data source
@@ -93,7 +81,6 @@ class TodoListTableViewController: UITableViewController, UINavigationController
             }
             
             tableView.isEditing = false
-            self.saveTodoItems()
         }
         
         completeAction.backgroundColor = .blue
@@ -102,7 +89,6 @@ class TodoListTableViewController: UITableViewController, UINavigationController
             
             // Delete the row from the data source
             self.todoList?.items.remove(at: indexPath.row)
-            self.saveTodoItems()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
@@ -161,26 +147,8 @@ class TodoListTableViewController: UITableViewController, UINavigationController
                 todoList?.items += [item]
                 tableView.insertRows(at: [indexPath], with: .bottom)
             }
-            
-            // Save the items
-            saveTodoItems()
-        }
-    }
 
-    // MARK: Private Methods
-    
-    private func saveTodoItems() {
-        let itemsToSave = todoList!.items
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(itemsToSave, toFile: TodoListTableViewController.ArchiveURL.path)
-        if isSuccessfulSave {
-            os_log("itemsTodo saved successfully", log: OSLog.default, type: .debug)
-        } else {
-            os_log("Unable to save itemsTodo", log: OSLog.default, type: .error)
         }
-    }
-    
-    private func loadTodoItems() -> [TodoItem]? {
-        return NSKeyedUnarchiver.unarchiveObject(withFile: TodoListTableViewController.ArchiveURL.path) as? [TodoItem]
     }
 
 }
