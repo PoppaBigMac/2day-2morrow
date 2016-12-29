@@ -75,7 +75,7 @@ class TodoItemViewController: UIViewController, UITextFieldDelegate, UINavigatio
             let name = itemNameTextField.text ?? "Default"
             let importance = importanceRating.rating
             
-            todoItem = TodoItem(itemName: name, importance: importance)!
+            todoItem = TodoItem(itemName: name, importance: importance, completed: false)!
         }
     }
     

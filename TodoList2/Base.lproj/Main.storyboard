@@ -28,12 +28,12 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-mL-TcD">
-                                            <rect key="frame" x="0.0" y="11.5" width="374" height="36.5"/>
+                                            <rect key="frame" x="0.0" y="17.5" width="374" height="26"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="List Title">
                                                     <attributes>
                                                         <color key="NSColor" red="0.048912964761257172" green="0.10250573605298996" blue="0.028232553973793983" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <font key="NSFont" size="30" name="Verdana-Bold"/>
+                                                        <font key="NSFont" size="21" name="Verdana-Bold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -88,13 +88,13 @@
                                 <rect key="frame" x="16" y="120" width="343" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtT-z2-TeP">
-                                        <rect key="frame" x="0.0" y="0.0" width="81.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GQ8-0c-gCd">
-                                        <rect key="frame" x="89.5" y="0.0" width="253.5" height="30"/>
+                                        <rect key="frame" x="90" y="0.0" width="253" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -141,7 +141,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TodoItemCell" rowHeight="90" id="RT1-Wk-UXa" customClass="TodoItemTableViewCell" customModule="TodoList2" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="TodoItemCell" rowHeight="90" id="RT1-Wk-UXa" customClass="TodoItemTableViewCell" customModule="TodoList2" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="RT1-Wk-UXa" id="ghX-o8-MBI">
@@ -149,7 +149,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqa-WL-mqO">
-                                            <rect key="frame" x="8" y="8" width="240" height="21"/>
+                                            <rect key="frame" x="8" y="8" width="295" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="To Do Item">
@@ -161,7 +161,7 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7E5-hY-BJo" customClass="RatingController" customModule="TodoList2" customModuleProvider="target">
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7E5-hY-BJo" customClass="RatingController" customModule="TodoList2" customModuleProvider="target">
                                             <rect key="frame" x="8" y="37" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -192,7 +192,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLO-6B-0pT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2490" y="528"/>
+            <point key="canvasLocation" x="2488.8000000000002" y="527.58620689655174"/>
         </scene>
         <!--Todo Item View Controller-->
         <scene sceneID="fqX-fv-nDa">
@@ -213,7 +213,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMm-mM-REg">
-                                                <rect key="frame" x="0.0" y="0.0" width="107.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="108" height="30"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Item Name">
                                                         <attributes>
@@ -225,14 +225,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Item Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9bj-0w-NiO">
-                                                <rect key="frame" x="115.5" y="0.0" width="227.5" height="30"/>
+                                                <rect key="frame" x="116" y="0.0" width="227" height="30"/>
                                                 <attributedString key="attributedText"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptr-wZ-dAH" customClass="RatingController" customModule="TodoList2" customModuleProvider="target">
-                                        <rect key="frame" x="51.5" y="46" width="240" height="44"/>
+                                        <rect key="frame" x="52" y="46" width="240" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="2Bd-i1-fEG"/>

@@ -46,14 +46,18 @@ class TodoListTableViewController: UITableViewController, UINavigationController
         let cellIdentifier = "TodoItemCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoItemTableViewCell
         
-        let item = todoList?.items[indexPath.row]
+        let item = todoList!.items[indexPath.row]
         
-        cell.todoItemImportance.rating = (item?.importance)!
-        cell.todoItemName.text = item?.itemName
+        cell.todoItemImportance.rating = item.importance
+        cell.todoItemName.text = item.itemName
+        if item.completed {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
         
         return cell
     }
-    
 
     
     // Override to support conditional editing of the table view.
@@ -66,14 +70,39 @@ class TodoListTableViewController: UITableViewController, UINavigationController
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let completeAction = UITableViewRowAction(style: .normal, title: "Complete") {(action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+
+            let cell = tableView.cellForRow(at: indexPath) as! TodoItemTableViewCell
+            let item = self.todoList!.items[indexPath.row]
+            item.completed = !item.completed
+            
+            if item.completed {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            
+            tableView.isEditing = false
+            self.saveTodoItems()
+        }
+        
+        completeAction.backgroundColor = .blue
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") {(action: UITableViewRowAction, indexPath: IndexPath) -> Void in
+            
             // Delete the row from the data source
-            todoList?.items.remove(at: indexPath.row)
-            saveTodoItems()
+            self.todoList?.items.remove(at: indexPath.row)
+            self.saveTodoItems()
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+        
+        return [deleteAction, completeAction]
+        
     }
     
 

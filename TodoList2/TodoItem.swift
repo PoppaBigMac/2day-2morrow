@@ -14,6 +14,7 @@ class TodoItem: NSObject, NSCoding {
     // MARK: Properties
     var itemName: String
     var importance: Int
+    var completed: Bool = false
     
     // MARK: Archiving Paths
     // Use the file manager to find the urls that lead to the documents for this app, use the first
@@ -25,11 +26,13 @@ class TodoItem: NSObject, NSCoding {
     struct PropertyKey {
         static let itemName = "itemName"
         static let importance = "importance"
+        static let completed = "completed"
     }
     
-    init?(itemName: String, importance: Int) {
+    init?(itemName: String, importance: Int, completed: Bool) {
         self.itemName = itemName
         self.importance = importance
+        self.completed = completed
         
         // if there is no name, the initilizer must fail
         if itemName.isEmpty {
@@ -41,6 +44,7 @@ class TodoItem: NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(itemName, forKey: PropertyKey.itemName)
         aCoder.encode(importance, forKey: PropertyKey.importance)
+        aCoder.encode(completed, forKey: PropertyKey.completed)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -50,8 +54,8 @@ class TodoItem: NSObject, NSCoding {
             return nil
         }
         let importance = aDecoder.decodeInteger(forKey: PropertyKey.importance)
+        let completed = aDecoder.decodeBool(forKey: PropertyKey.completed)
         
-        // Must call a designated initializer
-        self.init(itemName: itemName, importance: importance)
+        self.init(itemName: itemName, importance: importance, completed: completed)
     }
 }
